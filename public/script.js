@@ -7,7 +7,7 @@
   const summary = await sumRes.json();
   const holders = await holdersRes.json();
 
-  // 1️⃣ Buys vs Sells
+  // ── Buys vs Sells ──
   const sumSection = document.getElementById('summarySection');
   if ((summary.buys + summary.sells) === 0) {
     sumSection.insertAdjacentHTML('beforeend',
@@ -24,9 +24,22 @@
         }
       }
     );
+
+    // ── compute & append net‐direction label ──
+    const buys = summary.buys || 0;
+    const sells = summary.sells || 0;
+    const diff = buys - sells;
+    const dirLabel = document.createElement('div');
+    dirLabel.style.fontWeight = 'bold';
+    dirLabel.textContent = diff > 0
+      ? 'Net Direction: Buy-heavy'
+      : diff < 0
+        ? 'Net Direction: Sell-heavy'
+        : 'Net Direction: Neutral';
+    sumSection.appendChild(dirLabel);
   }
 
-  // 2️⃣ Protocol breakdown
+  // ── Protocol breakdown ──
   const protoSection = document.getElementById('protocolSection');
   if (!summary.protocol.length) {
     protoSection.insertAdjacentHTML('beforeend',
@@ -45,7 +58,7 @@
     );
   }
 
-  // 3️⃣ Top 10 holders (you’ll see this immediately)
+  // ── Top 10 holders ──
   const holdSection = document.getElementById('holdersSection');
   if (!holders.length) {
     holdSection.insertAdjacentHTML('beforeend',
@@ -66,9 +79,7 @@
         },
         options: {
           indexAxis: 'y',           // horizontal bars
-          scales: {
-            x: { beginAtZero: true }
-          }
+          scales: { x: { beginAtZero: true } }
         }
       }
     );

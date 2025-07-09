@@ -7,14 +7,29 @@
   <style>
     section { margin-bottom: 2rem; }
     canvas { max-width: 600px; }
+
+    /* ── NEW: flex‐align summary + remove inline gap under canvas ── */
+    #summarySection {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    canvas#buySellChart {
+      display: block;
+      height: auto !important;
+    }
+    /* ─────────────────────────────────────────────────────────── */
   </style>
 </head>
 <body>
   <h1>TokenWise Insights</h1>
 
   <section id="summarySection">
-    <h2>Buys vs Sells</h2>
-    <canvas id="buySellChart"></canvas>
+    <div style="flex-shrink:0">
+      <h2>Buys vs Sells</h2>
+      <canvas id="buySellChart"></canvas>
+    </div>
+    <!-- Net direction label will be injected here by script -->
   </section>
 
   <section id="protocolSection">

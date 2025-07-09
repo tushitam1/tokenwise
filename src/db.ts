@@ -1,7 +1,7 @@
-// backend/src/db.ts
+
 
 import sqlite3 from 'sqlite3';
-import { open, Database } from 'sqlite';         // <-- Make sure Database is imported
+import { open, Database } from 'sqlite';         
 import { ParsedTx } from './solana';
 
 export async function initDb(filePath: string): Promise<Database> {
