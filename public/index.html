@@ -1,35 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <title>TokenWise Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    section { margin-bottom: 2rem; }
-    canvas { max-width: 600px; }
-
-    /* ── NEW: flex‐align summary + remove inline gap under canvas ── */
-    #summarySection {
+    body {
+      font-family: sans-serif;
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    #controls {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 1rem;
+      gap: 0.5rem 1rem;
+      margin-bottom: 2rem;
     }
-    canvas#buySellChart {
-      display: block;
-      height: auto !important;
+    #controls label {
+      font-size: 0.9rem;
     }
-    /* ─────────────────────────────────────────────────────────── */
+    button {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    canvas {
+      max-width: 100%;
+    }
+    .direction-label {
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <h1>TokenWise Insights</h1>
 
+  <div id="controls">
+    <label>
+      From:
+      <input type="date" id="fromDate" />
+    </label>
+    <label>
+      To:
+      <input type="date" id="toDate" />
+    </label>
+    <button id="applyFilter">Apply</button>
+    <button id="downloadJson">Download JSON Report</button>
+    <button id="downloadCsv">Download CSV Report</button>
+  </div>
+
   <section id="summarySection">
-    <div style="flex-shrink:0">
-      <h2>Buys vs Sells</h2>
-      <canvas id="buySellChart"></canvas>
-    </div>
-    <!-- Net direction label will be injected here by script -->
+    <h2>Buys vs Sells</h2>
+    <canvas id="buySellChart"></canvas>
   </section>
 
   <section id="protocolSection">
@@ -42,6 +70,7 @@
     <canvas id="holdersChart"></canvas>
   </section>
 
+  <!-- your script.js containing the fetching, filtering, chart rendering & exports -->
   <script src="script.js"></script>
 </body>
 </html>
