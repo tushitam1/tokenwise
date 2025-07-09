@@ -1,0 +1,9 @@
+# Auto-detect text files, enforce LF in repo
+* text=auto eol=lf
+
+# If you prefer CRLF on Windows working copies, override per OS:
+#*.js text eol=crlf
+#*.ts text eol=crlf
+
+# But always keep dependencies untouched
+/node_modules/* -text

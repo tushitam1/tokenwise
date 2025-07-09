@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>TokenWise Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    section { margin-bottom: 2rem; }
+    canvas { max-width: 600px; }
+  </style>
+</head>
+<body>
+  <h1>TokenWise Insights</h1>
+
+  <section id="summarySection">
+    <h2>Buys vs Sells</h2>
+    <canvas id="buySellChart"></canvas>
+  </section>
+
+  <section id="protocolSection">
+    <h2>Protocol Breakdown</h2>
+    <canvas id="protocolChart"></canvas>
+  </section>
+
+  <section id="holdersSection">
+    <h2>Top 10 Holders</h2>
+    <canvas id="holdersChart"></canvas>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
