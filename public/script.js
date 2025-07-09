@@ -50,7 +50,7 @@
   async function renderAll() {
     const { summary, holders } = await fetchReportData();
 
-    // clear old canvases before drawing
+   
     for (let id of ['buySellChart','protocolChart','holdersChart']) {
       if (charts[id]) charts[id].destroy();
     }
